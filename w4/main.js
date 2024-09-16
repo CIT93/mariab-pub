@@ -17,7 +17,7 @@ function determineHouseSizePts(size) {
 let carbonFootPoints = 0;
 
 
-const CFPDATA = [];
+const cpfData = [];
 
 
 function determineHouseHoldPts(numberInHousehold) { 
@@ -45,12 +45,31 @@ function start(houseHoldMembers, houseSize) {
     const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
     const houseSizePTS = determineHouseSizePts(houseSize);
     const total = houseHoldPTS + houseSizePTS;
-    CFPDATA.push(houseHoldMembers, houseSize, houseHoldPTS, houseSizePTS, total)
+    cpfData.push([houseHoldMembers, houseSize, houseHoldPTS, houseSizePTS, total])
  }
 
 function displayOutput() {
-    
+ for (arr of cpfData){
+    console.log(arr);
+    const output = document.getElementById("output");
+    const newP = document.createElement("p");
+    const newP2 = document.createElement("p2");
+    const newP3 = document.createElement("p3");
+    const newP4 = document.createElement("p4");
+    const newP5 = document.createElement("p5");
+    newP.textContent = 'Carbon Footprint total is ${arr[4]}';
+    newP2.textContent = 'Number of household members ${arr[5]}';
+    newP3.textContent = 'Score of house ${arr[6]}';
+    newP4.textContent = 'Size of house ${arr[2]}';
+    newP5.textContent = 'Score for size of house ${arr[8]}';
+    output.appendChild(newP);
+    output.appendChild(newP2);
+    output.appendChild(newP3);
+    output.appendChild(newP4);
+    output.appendChild(newP5);
+ }
 }
+
 
 start (5, "apt");
 start (4, "large");
